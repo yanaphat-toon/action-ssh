@@ -1,0 +1,23 @@
+name: "SSH-Remote-Action"
+description: "Run commands on a remote server over SSH"
+inputs:
+  host:
+    description: "Remote host"
+    required: true
+  username:
+    description: "SSH username"
+    required: true
+  key:
+    description: "SSH private key"
+    required: true
+  script:
+    description: "Commands to run"
+    required: true
+runs:
+  using: "docker"
+  image: "docker://ghcr.io/yanaphat-toon/action-ssh:latest"
+  args:
+    - ${{ inputs.host }}
+    - ${{ inputs.username }}
+    - ${{ inputs.key }}
+    - ${{ inputs.script }}
