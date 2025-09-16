@@ -1,4 +1,4 @@
-name: "SSH-Remote-Action"
+name: "GH-Remote-Action"
 description: "Run commands on a remote server over SSH"
 inputs:
   host:
