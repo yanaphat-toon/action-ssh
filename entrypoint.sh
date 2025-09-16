@@ -8,7 +8,11 @@ PORT="$4"
 TIMEOUT="$5"
 SCRIPT="$6"
 
-# Connect SSH and execute script
-ssh -i <(echo "$KEY") -o StrictHostKeyChecking=no -p "$PORT" "$USERNAME@$HOST" "bash -s" <<EOF
+# Write key to file
+echo "$KEY" > key.pem
+chmod 600 key.pem
+
+# Connect via SSH and run the script
+ssh -i key.pem -o StrictHostKeyChecking=no -o ConnectTimeout="$TIMEOUT" -p "$PORT" "$USERNAME@$HOST" "bash -s" <<EOF
 $SCRIPT
 EOF
