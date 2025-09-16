@@ -10,6 +10,14 @@ inputs:
   key:
     description: "SSH private key"
     required: true
+  port:
+    description: "SSH port"
+    required: false
+    default: "22"
+  timeout:
+    description: "Connection timeout (in seconds)"
+    required: false
+    default: "30"
   script:
     description: "Commands to run"
     required: true
@@ -20,4 +28,6 @@ runs:
     - ${{ inputs.host }}
     - ${{ inputs.username }}
     - ${{ inputs.key }}
+    - ${{ inputs.port }}
+    - ${{ inputs.timeout }}
     - ${{ inputs.script }}
