@@ -18,7 +18,7 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ${{ env.CONTAINER_REPOSITORY }} -u ${{ github.actor }} --password-stdin
 
       - name: Download .tar from GitHub Release
-        run: gh release download --repo ${{ github.repository }} --pattern "my-ssh-action.tar" --dir .
+        run: gh release download --repo ${{ github.repository }} --pattern "GH-Remote-Action.tar" --dir .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
