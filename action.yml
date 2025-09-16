@@ -23,7 +23,7 @@ inputs:
     required: true
 runs:
   using: "docker"
-  image: "docker://ghcr.io/yanaphat-toon/action-ssh:latest"
+  image: "Dockerfile"
   args:
     - ${{ inputs.host }}
     - ${{ inputs.username }}
