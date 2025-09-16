@@ -2,11 +2,13 @@
 set -e
 
 HOST="$1"
-USER="$2"
+USERNAME="$2"
 KEY="$3"
-SCRIPT="$4"
+PORT="$4"
+TIMEOUT="$5"
+SCRIPT="$6"
 
-echo "$KEY" > key.pem
-chmod 600 key.pem
-
-ssh -o StrictHostKeyChecking=no -i key.pem "$USER@$HOST" "$SCRIPT"
+# Connect SSH and execute script
+ssh -i <(echo "$KEY") -o StrictHostKeyChecking=no -p "$PORT" "$USERNAME@$HOST" "bash -s" <<EOF
+$SCRIPT
+EOF
